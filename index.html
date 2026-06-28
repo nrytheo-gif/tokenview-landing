@@ -80,7 +80,7 @@
     .hero {
       max-width: var(--max);
       margin: 0 auto;
-      padding: clamp(32px, 6vw, 60px) var(--gutter) clamp(64px, 10vw, 100px);
+      padding: clamp(36px, 6vw, 60px) var(--gutter) clamp(64px, 10vw, 100px);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
@@ -113,7 +113,7 @@
     }
     .hero h1 .h1-sub {
       display: block;
-      font-size: 0.55em;
+      font-size: 0.52em;
       color: var(--ink-soft);
       letter-spacing: -0.02em;
       margin-top: 6px;
@@ -498,6 +498,7 @@
         Your teams are using OpenAI, Anthropic, Azure, and more. Tokenview gives engineering and FinOps leaders a single, clear view of what's being spent, by whom, and whether it's working.
       </p>
       <div class="waitlist-form" id="waitlist">
+        <input type="text" name="website" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <input type="email" id="email1" placeholder="your@company.com" autocomplete="email" />
         <button onclick="handleSignup('email1', 'success1')">Join waitlist</button>
       </div>
@@ -680,6 +681,7 @@
     <h2 class="reveal">Get early access to Tokenview.</h2>
     <p class="reveal">We're working with a small number of teams to shape the product. No commitment required.</p>
     <div class="final-form reveal">
+      <input type="text" name="website" style="display:none;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <input type="email" id="email2" placeholder="your@company.com" autocomplete="email" />
       <button onclick="handleSignup('email2', 'success2')">Join waitlist</button>
     </div>
@@ -699,6 +701,11 @@
       const input = document.getElementById(inputId);
       const success = document.getElementById(successId);
       const email = input.value.trim();
+
+      // honeypot check — if filled, it's a bot; fail silently
+      const honeypot = input.closest('form, div').querySelector('input[name="website"]');
+      if (honeypot && honeypot.value !== '') return;
+
       const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       if (!valid) {
         input.style.borderColor = '#D9400A';
