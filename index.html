@@ -178,17 +178,22 @@
     <span>Early stage · <a href="mailto:nry.theo@gmail.com">nry.theo@gmail.com</a></span>
   </footer>
   <script>
-    function handleSignup(inputId, successId) {
+    async function handleSignup(inputId, successId) {
       const input = document.getElementById(inputId);
       const success = document.getElementById(successId);
-      const email = input.value.trim();
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      if (!valid) { input.style.borderColor = '#D9400A'; input.focus(); return; }
-      input.style.borderColor = '';
-      console.log('Waitlist signup:', email);
-      input.parentElement.style.display = 'none';
-      success.style.display = 'block';
-    }
+        const email = input.value.trim();
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!valid) { input.style.borderColor = '#D9400A'; input.focus(); return; }
+        input.style.borderColor = '';
+        await fetch('https://formspree.io/f/xwvdbwaa', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        input.parentElement.style.display = 'none';
+        success.style.display = 'block';
+      }
+
     document.querySelectorAll('input[type="email"]').forEach(input => {
       input.addEventListener('keydown', e => { if (e.key === 'Enter') { const btn = input.parentElement.querySelector('button'); if (btn) btn.click(); } });
       input.addEventListener('input', () => { input.style.borderColor = ''; });
