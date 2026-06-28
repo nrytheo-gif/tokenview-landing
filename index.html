@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,105 +10,493 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --ink: #0E0F11; --ink-soft: #5A5E6B; --ink-faint: #9EA3B0;
-      --rule: #E4E6EC; --surface: #F7F8FA; --white: #FFFFFF;
-      --accent: #1A6BFF; --accent-dim: #E8F0FF;
-      --font-display: 'Inter', sans-serif; --font-mono: 'DM Mono', monospace;
-      --max: 1080px; --gutter: clamp(20px, 5vw, 60px);
+      --ink:       #0E0F11;
+      --ink-soft:  #5A5E6B;
+      --ink-faint: #9EA3B0;
+      --rule:      #E4E6EC;
+      --surface:   #F7F8FA;
+      --white:     #FFFFFF;
+      --accent:    #1A6BFF;
+      --accent-dim:#E8F0FF;
+
+      --font-display: 'Inter', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --max: 1080px;
+      --gutter: clamp(20px, 5vw, 60px);
     }
+
     html { font-size: 16px; }
-    body { font-family: var(--font-display); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); height: 56px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: var(--font-mono); font-size: 15px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+    body {
+      font-family: var(--font-display);
+      background: var(--white);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
     .logo span { color: var(--accent); }
-    .nav-cta { font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; padding: 6px 14px; border: 1px solid var(--accent); border-radius: 6px; transition: background 0.15s, color 0.15s; }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
     .nav-cta:hover { background: var(--accent); color: #fff; }
-    .hero { max-width: var(--max); margin: 0 auto; padding: clamp(72px, 12vw, 120px) var(--gutter) clamp(64px, 10vw, 100px); display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    @media (max-width: 720px) { .hero { grid-template-columns: 1fr; gap: 48px; } }
-    .hero-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(32px, 4.5vw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 20px; }
-    .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero-sub { font-size: 17px; font-weight: 300; color: var(--ink-soft); line-height: 1.65; max-width: 420px; margin-bottom: 36px; }
-    .waitlist-form { display: flex; gap: 10px; flex-wrap: wrap; }
-    .waitlist-form input[type="email"] { flex: 1; min-width: 220px; height: 46px; padding: 0 16px; font-size: 14px; font-family: var(--font-display); border: 1px solid var(--rule); border-radius: 8px; background: var(--white); color: var(--ink); outline: none; transition: border-color 0.15s; }
+
+    /* HERO */
+    .hero {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(72px, 12vw, 120px) var(--gutter) clamp(64px, 10vw, 100px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero h1 .h1-sub {
+      display: block;
+      font-size: 0.68em;
+      color: var(--ink-soft);
+      letter-spacing: -0.02em;
+      margin-top: 6px;
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    /* FORM */
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .waitlist-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      height: 46px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-family: var(--font-display);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
     .waitlist-form input[type="email"]:focus { border-color: var(--accent); }
     .waitlist-form input[type="email"]::placeholder { color: var(--ink-faint); }
-    .waitlist-form button { height: 46px; padding: 0 22px; font-size: 14px; font-weight: 500; font-family: var(--font-display); background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap; }
+    .waitlist-form button {
+      height: 46px;
+      padding: 0 22px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font-display);
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
     .waitlist-form button:hover { opacity: 0.88; }
     .waitlist-form button:active { transform: scale(0.98); }
-    .form-note { margin-top: 10px; font-size: 12px; color: var(--ink-faint); }
-    .success-msg { display: none; margin-top: 14px; font-size: 14px; color: #1A7F4B; font-weight: 500; }
-    .hero-visual { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; font-family: var(--font-mono); }
-    .visual-header { padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
-    .visual-header-label { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.08em; text-transform: uppercase; }
-    .visual-header-date { font-size: 11px; color: var(--ink-faint); }
+    .form-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--ink-faint);
+    }
+    .success-msg {
+      display: none;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #1A7F4B;
+      font-weight: 500;
+    }
+
+    /* HERO VISUAL — spend ledger */
+    .hero-visual {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+    .visual-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
+    }
+    .visual-header-label {
+      font-size: 11px;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .visual-header-date {
+      font-size: 11px;
+      color: var(--ink-faint);
+    }
     .visual-rows { padding: 8px 0; }
-    .visual-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 10px 20px; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+    .visual-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.12s;
+    }
     .visual-row:last-child { border-bottom: none; }
     .visual-row:hover { background: var(--accent-dim); }
     .row-team { font-size: 12px; color: var(--ink); font-weight: 400; }
-    .row-provider { font-size: 10px; color: var(--ink-faint); padding: 2px 7px; background: var(--rule); border-radius: 4px; letter-spacing: 0.04em; }
-    .row-cost { font-size: 13px; font-weight: 500; color: var(--ink); text-align: right; }
+    .row-provider {
+      font-size: 10px;
+      color: var(--ink-faint);
+      padding: 2px 7px;
+      background: var(--rule);
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .row-cost {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: right;
+    }
     .row-cost.high { color: #D9400A; }
-    .row-cost.med { color: #C07A00; }
-    .visual-footer { padding: 12px 20px; background: var(--white); border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; }
+    .row-cost.med  { color: #C07A00; }
+    .visual-footer {
+      padding: 12px 20px;
+      background: var(--white);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .footer-label { font-size: 11px; color: var(--ink-faint); }
     .footer-total { font-size: 15px; font-weight: 500; color: var(--ink); }
-    .problem-strip { background: var(--surface); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: clamp(40px, 6vw, 72px) var(--gutter); }
-    .problem-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    @media (max-width: 720px) { .problem-inner { grid-template-columns: 1fr; gap: 32px; } }
-    .problem-stat { display: flex; flex-direction: column; gap: 8px; }
-    .stat-number { font-family: var(--font-mono); font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; color: var(--ink); letter-spacing: -0.04em; }
+
+    /* DIVIDER */
+    .section-rule {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* PROBLEM STRIP */
+    .problem-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: clamp(40px, 6vw, 72px) var(--gutter);
+    }
+    .problem-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    @media (max-width: 720px) {
+      .problem-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .problem-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.04em;
+    }
     .stat-number span { color: var(--accent); }
-    .stat-label { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-    .how { max-width: var(--max); margin: 0 auto; padding: clamp(64px, 10vw, 100px) var(--gutter); }
-    .section-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-    .section-heading { font-size: clamp(22px, 3vw, 32px); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 48px; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
-    .step { padding: 28px; border: 1px solid var(--rule); border-radius: 10px; background: var(--white); }
-    .step-index { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); margin-bottom: 16px; }
-    .step-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
-    .step-body { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
-    .providers { background: var(--surface); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: clamp(48px, 7vw, 80px) var(--gutter); }
-    .providers-inner { max-width: var(--max); margin: 0 auto; }
-    .provider-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .provider-pill { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); padding: 8px 16px; border: 1px solid var(--rule); border-radius: 100px; background: var(--white); letter-spacing: 0.04em; }
-    .provider-pill.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .stat-label {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* HOW IT WORKS */
+    .how {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(64px, 10vw, 100px) var(--gutter);
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-heading {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 720px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+    .step {
+      padding: 28px;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      background: var(--white);
+    }
+    .step-icon { margin-bottom: 20px; }
+    .step-index {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-bottom: 16px;
+    }
+    .step-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .step-body {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* PROVIDERS */
+    .providers {
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: clamp(48px, 7vw, 80px) var(--gutter);
+    }
+    .providers-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .provider-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .provider-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-soft);
+      padding: 8px 16px;
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      background: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .provider-pill.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
     .provider-pill.soon { color: var(--ink-faint); }
-    .provider-pill.soon::after { content: ' · soon'; font-size: 10px; }
-    .final-cta { max-width: var(--max); margin: 0 auto; padding: clamp(80px, 12vw, 120px) var(--gutter); text-align: center; }
-    .final-cta h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 500; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .final-cta p { font-size: 16px; color: var(--ink-soft); margin-bottom: 36px; }
-    .final-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .final-form input[type="email"] { width: 280px; height: 46px; padding: 0 16px; font-size: 14px; font-family: var(--font-display); border: 1px solid var(--rule); border-radius: 8px; outline: none; transition: border-color 0.15s; }
+    .provider-pill.soon::after {
+      content: ' · soon';
+      font-size: 10px;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: clamp(80px, 12vw, 120px) var(--gutter);
+      text-align: center;
+    }
+    .final-cta-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .final-cta h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+    }
+    .final-form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .final-form input[type="email"] {
+      width: 280px;
+      height: 46px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-family: var(--font-display);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
     .final-form input[type="email"]:focus { border-color: var(--accent); }
     .final-form input[type="email"]::placeholder { color: var(--ink-faint); }
-    .final-form button { height: 46px; padding: 0 22px; font-size: 14px; font-weight: 500; font-family: var(--font-display); background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.15s; }
+    .final-form button {
+      height: 46px;
+      padding: 0 22px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font-display);
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
     .final-form button:hover { opacity: 0.88; }
-    .success-msg-2 { display: none; margin-top: 14px; font-size: 14px; color: #1A7F4B; font-weight: 500; }
-    footer { border-top: 1px solid var(--rule); padding: 24px var(--gutter); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+    .success-msg-2 {
+      display: none;
+      margin-top: 14px;
+      font-size: 14px;
+      color: #1A7F4B;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 24px var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--ink-faint);
+      font-family: var(--font-mono);
+    }
     footer a { color: var(--ink-faint); text-decoration: none; }
     footer a:hover { color: var(--ink-soft); }
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
     <div class="nav-inner">
       <a class="logo" href="#">token<span>view</span></a>
       <a class="nav-cta" href="#waitlist">Join waitlist</a>
     </div>
   </nav>
+
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <p class="hero-eyebrow">AI Spend Visibility</p>
-      <h1>Track and trace your AI spend across <em>every team</em> and tool.</h1>
-      <p class="hero-sub">Your teams are using OpenAI, Anthropic, Azure, and more. Tokenview gives engineering and FinOps leaders a single, clear view of what's being spent, by whom, and whether it's working.</p>
+      <h1>Track and trace your AI spend<span class="h1-sub">across every team and AI tool.</span></h1>
+      <p class="hero-sub">
+        Your teams are using OpenAI, Anthropic, Azure, and more. Tokenview gives engineering and FinOps leaders a single, clear view of what's being spent, by whom, and whether it's working.
+      </p>
       <div class="waitlist-form" id="waitlist">
         <input type="email" id="email1" placeholder="your@company.com" autocomplete="email" />
         <button onclick="handleSignup('email1', 'success1')">Join waitlist</button>
@@ -115,56 +504,179 @@
       <p class="form-note">Early access only. No spam.</p>
       <p class="success-msg" id="success1">✓ You're on the list. We'll be in touch.</p>
     </div>
-    <div class="hero-visual" role="img" aria-label="Example AI spend report">
-      <div class="visual-header">
-        <span class="visual-header-label">June spend · by team</span>
-        <span class="visual-header-date">Jun 2026</span>
+
+    <div role="img" aria-label="MTD AI spend gauge" style="border:1px solid #E4E6EC;border-radius:12px;overflow:hidden;font-family:'DM Mono',monospace;background:#fff;">
+      <div style="padding:12px 20px;border-bottom:1px solid #E4E6EC;display:flex;align-items:center;justify-content:space-between;background:#F7F8FA;">
+        <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#3A3E4B;">MTD spending</span>
+        <span style="font-size:11px;color:#9EA3B0;">Jun 2026</span>
       </div>
-      <div class="visual-rows">
-        <div class="visual-row"><span class="row-team">Platform Engineering</span><span class="row-provider">OpenAI</span><span class="row-cost high">$4,812</span></div>
-        <div class="visual-row"><span class="row-team">Growth</span><span class="row-provider">Anthropic</span><span class="row-cost med">$2,340</span></div>
-        <div class="visual-row"><span class="row-team">Customer Success</span><span class="row-provider">OpenAI</span><span class="row-cost">$1,190</span></div>
-        <div class="visual-row"><span class="row-team">Data Science</span><span class="row-provider">Azure AI</span><span class="row-cost">$876</span></div>
-        <div class="visual-row"><span class="row-team">Internal Tools</span><span class="row-provider">Anthropic</span><span class="row-cost">$541</span></div>
+      <div style="padding:18px 20px 16px;border-bottom:1px solid #E4E6EC;">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;">
+          <div>
+            <div><span style="font-size:48px;font-weight:500;color:#0E0F11;line-height:1;letter-spacing:-0.03em;">81</span><span style="font-size:22px;font-weight:400;color:#5A5E6B;vertical-align:super;margin-left:2px;">%</span></div>
+            <div style="font-size:11px;color:#9EA3B0;margin-top:4px;letter-spacing:0.04em;text-transform:uppercase;">of budget used</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:13px;font-weight:500;color:#5A5E6B;">$9,759 of $12,000</div>
+            <div style="font-size:11px;color:#9EA3B0;">3 days left in Jun</div>
+          </div>
+        </div>
+        <div style="height:6px;background:#F7F8FA;border-radius:3px;margin-top:14px;overflow:hidden;">
+          <div style="height:100%;width:81%;border-radius:3px;background:#EF9F27;"></div>
+        </div>
       </div>
-      <div class="visual-footer">
-        <span class="footer-label">MTD total</span>
-        <span class="footer-total">$9,759</span>
+      <div id="hero-teams" style="padding:10px 0 4px;"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin:10px 20px 14px;padding:10px 14px;border-radius:8px;background:#FAEEDA;border:1px solid #EF9F27;font-size:11px;color:#854F0B;">
+        <div style="width:6px;height:6px;border-radius:50%;background:#854F0B;flex-shrink:0;"></div>
+        Platform Eng on track to exceed budget by $620
       </div>
     </div>
+    <script>
+    (function(){
+      var SPENT=9759;
+      var TEAMS=[
+        {name:'Platform Eng',amt:4812,shades:['#B5D4F4','#378ADD','#185FA5'],lc:['#185FA5','#0C447C','#042C53'],models:[{name:'gpt-4o',amt:2640},{name:'gpt-4o-mini',amt:1420},{name:'text-embedding-3',amt:752}]},
+        {name:'Growth',amt:2340,shades:['#F5C4B3','#D85A30','#993C1D'],lc:['#993C1D','#712B13','#4A1B0C'],models:[{name:'claude-3-5-sonnet',amt:1580},{name:'claude-3-haiku',amt:760}]},
+        {name:'Customer Success',amt:1190,shades:['#9FE1CB','#1D9E75','#0F6E56'],lc:['#0F6E56','#085041','#04342C'],models:[{name:'gpt-4o-mini',amt:890},{name:'gpt-3.5-turbo',amt:300}]},
+        {name:'Data Science',amt:876,shades:['#CECBF6','#7F77DD','#534AB7'],lc:['#534AB7','#3C3489','#26215C'],models:[{name:'claude-3-opus',amt:540},{name:'gemini-1.5-pro',amt:336}]},
+      ];
+      function fmt(n){return'$'+n.toLocaleString();}
+      var list=document.getElementById('hero-teams');
+      TEAMS.forEach(function(t,ti){
+        var totalPct=(t.amt/SPENT)*100;
+        var labelSegs=t.models.map(function(m,mi){
+          var sp=(m.amt/t.amt)*totalPct;
+          return '<div style="width:'+sp.toFixed(1)+'%;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:1px;"><span style="font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:2px;color:'+t.lc[mi%t.lc.length]+';">'+m.name+'</span></div>';
+        }).join('');
+        var barSegs=t.models.map(function(m,mi){
+          var sp=(m.amt/t.amt)*totalPct;
+          return '<div style="width:'+sp.toFixed(1)+'%;height:100%;background:'+t.shades[mi%t.shades.length]+';"></div>';
+        }).join('');
+        var row=document.createElement('div');
+        var isLast=ti===TEAMS.length-1;
+        row.style.cssText='padding:8px 20px 12px;'+(isLast?'':'border-bottom:1px solid #E4E6EC;');
+        row.innerHTML='<div style="display:grid;grid-template-columns:100px 1fr 52px;gap:10px;align-items:center;margin-bottom:5px;"><span style="font-size:12px;color:#5A5E6B;">'+t.name+'</span><div></div><span style="font-size:12px;font-weight:500;color:#0E0F11;text-align:right;">'+fmt(t.amt)+'</span></div><div style="display:flex;height:16px;margin-bottom:3px;">'+labelSegs+'</div><div style="height:10px;background:#F7F8FA;border-radius:5px;overflow:hidden;display:flex;">'+barSegs+'</div>';
+        list.appendChild(row);
+      });
+    })();
+    </script>
   </section>
+
+  <!-- PROBLEM STRIP -->
   <section class="problem-strip">
     <div class="problem-inner">
-      <div class="problem-stat reveal"><span class="stat-number"><span>60</span>%</span><span class="stat-label">of enterprises have introduced guardrails on AI spend — most are flying blind before that point.</span></div>
-      <div class="problem-stat reveal"><span class="stat-number">4<span>+</span></span><span class="stat-label">AI providers the average engineering org uses, each with its own billing dashboard and data format.</span></div>
-      <div class="problem-stat reveal"><span class="stat-number"><span>$</span>0</span><span class="stat-label">visibility into which teams or products are driving spend — until the invoice arrives.</span></div>
+      <div class="problem-stat reveal">
+        <span class="stat-number"><span>60</span>%</span>
+        <span class="stat-label">of enterprises have introduced guardrails on AI spend — most are flying blind before that point.</span>
+      </div>
+      <div class="problem-stat reveal">
+        <span class="stat-number">4<span>+</span></span>
+        <span class="stat-label">AI providers the average engineering org uses, each with its own billing dashboard and data format.</span>
+      </div>
+      <div class="problem-stat reveal">
+        <span class="stat-number"><span>$</span>0</span>
+        <span class="stat-label">visibility into which teams or products are driving spend — until the invoice arrives.</span>
+      </div>
     </div>
   </section>
+
+  <!-- HOW IT WORKS -->
   <section class="how">
     <p class="section-eyebrow">How it works</p>
     <h2 class="section-heading">One view across every provider and team.</h2>
     <div class="steps">
-      <div class="step reveal"><p class="step-index">01</p><p class="step-title">Connect your providers</p><p class="step-body">Add API keys for OpenAI, Anthropic, Azure, Google, and more. Tokenview pulls usage data securely — read-only, never writes.</p></div>
-      <div class="step reveal"><p class="step-index">02</p><p class="step-title">Attribute spend to teams</p><p class="step-body">Map usage to teams, products, or cost centres using tags, prefixes, or project IDs. Normalised across providers.</p></div>
-      <div class="step reveal"><p class="step-index">03</p><p class="step-title">Set budgets and alerts</p><p class="step-body">Define spend thresholds per team or provider. Get notified before a budget is breached, not after the invoice.</p></div>
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1A6BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H3a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 12 11 12"/></svg>
+        </div>
+        <p class="step-index">01</p>
+        <p class="step-title">Connect your providers</p>
+        <p class="step-body">Add API keys for OpenAI, Anthropic, Azure, Google, and more. Tokenview pulls usage data securely — read-only, never writes.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1A6BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="step-index">02</p>
+        <p class="step-title">Attribute spend to teams</p>
+        <p class="step-body">Map usage to teams, products, or cost centres using tags, prefixes, or project IDs. Normalised across providers.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1A6BFF" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <p class="step-index">03</p>
+        <p class="step-title">Set budgets and alerts</p>
+        <p class="step-body">Define spend thresholds per team or provider. Get notified before a budget is breached, not after the invoice.</p>
+      </div>
     </div>
   </section>
+
+  <!-- PROVIDERS -->
   <section class="providers">
     <div class="providers-inner reveal">
       <p class="section-eyebrow">Integrations</p>
       <h2 class="section-heading">Every major provider. One normalised view.</h2>
-      <div class="provider-grid">
-        <span class="provider-pill active">OpenAI</span>
-        <span class="provider-pill active">Anthropic</span>
-        <span class="provider-pill soon">Azure OpenAI</span>
-        <span class="provider-pill soon">Google Vertex</span>
-        <span class="provider-pill soon">AWS Bedrock</span>
-        <span class="provider-pill soon">Cohere</span>
-        <span class="provider-pill soon">Mistral</span>
+      <div style="margin-bottom: 28px;">
+        <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px;">API providers</p>
+        <div class="provider-grid">
+          <span class="provider-pill active">OpenAI</span>
+          <span class="provider-pill active">Anthropic</span>
+          <span class="provider-pill soon">Azure OpenAI</span>
+          <span class="provider-pill soon">Google Vertex</span>
+          <span class="provider-pill soon">AWS Bedrock</span>
+          <span class="provider-pill soon">Cohere</span>
+          <span class="provider-pill soon">Mistral</span>
+          <span class="provider-pill soon">Together AI</span>
+        </div>
+      </div>
+      <div style="margin-bottom: 28px;">
+        <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px;">SaaS AI wrappers</p>
+        <div class="provider-grid">
+          <span class="provider-pill soon">Cursor</span>
+          <span class="provider-pill soon">GitHub Copilot</span>
+          <span class="provider-pill soon">Perplexity</span>
+          <span class="provider-pill soon">Notion AI</span>
+          <span class="provider-pill soon">Jasper</span>
+          <span class="provider-pill soon">Copy.ai</span>
+          <span class="provider-pill soon">Glean</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px;">Credit-based apps</p>
+        <div class="provider-grid">
+          <span class="provider-pill soon">Midjourney</span>
+          <span class="provider-pill soon">Runway</span>
+          <span class="provider-pill soon">ElevenLabs</span>
+          <span class="provider-pill soon">Synthesia</span>
+          <span class="provider-pill soon">Suno</span>
+          <span class="provider-pill soon">Ideogram</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- WAITLIST SCARCITY -->
+  <section style="max-width: 1080px; margin: 0 auto; padding: clamp(64px, 10vw, 100px) clamp(20px, 5vw, 60px);">
+    <div style="border: 1px solid #E4E6EC; border-radius: 12px; padding: clamp(32px, 5vw, 56px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px;" class="reveal">
+      <div style="flex: 1; min-width: 240px;">
+        <p style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #ffffff; background: #1A6BFF; display: inline-block; padding: 4px 10px; border-radius: 4px; margin-bottom: 14px;">Limited access</p>
+        <h2 style="font-size: clamp(22px, 3vw, 32px); font-weight: 500; letter-spacing: -0.02em; color: #0E0F11; margin-bottom: 12px; line-height: 1.2;">We're only accepting a small number of teams right now.</h2>
+        <p style="font-size: 15px; color: #5A5E6B; line-height: 1.6; max-width: 480px;">Early access is limited so we can focus on bringing maximum value and ensure quality to each team we work with. Once spots are filled, we'll move to a standard waitlist.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;">
+        <div style="background: #F7F8FA; border: 1px solid #E4E6EC; border-radius: 12px; padding: 28px 40px; text-align: center;">
+          <p style="font-family: 'DM Mono', monospace; font-size: 52px; font-weight: 500; color: #0E0F11; line-height: 1; letter-spacing: -0.04em;">7</p>
+          <p style="font-family: 'DM Mono', monospace; font-size: 11px; color: #9EA3B0; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px;">validated spots taken</p>
+        </div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 11px; color: #9EA3B0;">Updated 28 Jun 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
   <section class="final-cta">
+    <div class="final-cta-inner">
     <h2 class="reveal">Get early access to Tokenview.</h2>
     <p class="reveal">We're working with a small number of teams to shape the product. No commitment required.</p>
     <div class="final-form reveal">
@@ -172,32 +684,46 @@
       <button onclick="handleSignup('email2', 'success2')">Join waitlist</button>
     </div>
     <p class="success-msg-2" id="success2">✓ You're on the list. We'll be in touch.</p>
+    </div>
   </section>
+
+  <!-- FOOTER -->
   <footer>
     <span>© 2026 Tokenview</span>
     <span>Early stage · <a href="mailto:nry.theo@gmail.com">nry.theo@gmail.com</a></span>
   </footer>
+
   <script>
-    async function handleSignup(inputId, successId) {
+    // Waitlist signup (stub — swap in Mailchimp / Typeform / Supabase endpoint)
+    function handleSignup(inputId, successId) {
       const input = document.getElementById(inputId);
       const success = document.getElementById(successId);
-        const email = input.value.trim();
-        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!valid) { input.style.borderColor = '#D9400A'; input.focus(); return; }
-        input.style.borderColor = '';
-        await fetch('https://formspree.io/f/xwvdbwaa', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
-        });
-        input.parentElement.style.display = 'none';
-        success.style.display = 'block';
+      const email = input.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid) {
+        input.style.borderColor = '#D9400A';
+        input.focus();
+        return;
       }
+      input.style.borderColor = '';
+      // TODO: POST to your backend / Mailchimp / Supabase
+      console.log('Waitlist signup:', email);
+      input.parentElement.style.display = 'none';
+      success.style.display = 'block';
+    }
 
+    // Enter key support
     document.querySelectorAll('input[type="email"]').forEach(input => {
-      input.addEventListener('keydown', e => { if (e.key === 'Enter') { const btn = input.parentElement.querySelector('button'); if (btn) btn.click(); } });
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const btn = input.parentElement.querySelector('button');
+          if (btn) btn.click();
+        }
+      });
       input.addEventListener('input', () => { input.style.borderColor = ''; });
     });
+
+    // Scroll reveal
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
     }, { threshold: 0.12 });
@@ -205,4 +731,3 @@
   </script>
 </body>
 </html>
-
